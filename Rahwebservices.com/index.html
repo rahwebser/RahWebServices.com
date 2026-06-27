@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rah Web Services | Professional Web Solutions</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #6c3ce0, #a855f7);
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(108, 60, 224, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(108, 60, 224, 0.6);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+        }
+
+        .btn-coming-soon {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            color: #888;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            cursor: not-allowed;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 0;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6c3ce0, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo span {
+            font-weight: 300;
+            -webkit-text-fill-color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #a855f7;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #a855f7;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #6c3ce0, #a855f7);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            -webkit-text-fill-color: #fff;
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108, 60, 224, 0.15), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, #6c3ce0, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .hero-stats h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .hero-stats p {
+            font-size: 0.9rem;
+            color: #888;
+            margin: 0;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image .circle-bg {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(108, 60, 224, 0.2), rgba(168, 85, 247, 0.1));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .hero-image i {
+            font-size: 12rem;
+            color: #a855f7;
+            opacity: 0.8;
+        }
+
+        /* ===== SECTION TITLES ===== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        .section-title h2 .highlight {
+            background: linear-gradient(135deg, #6c3ce0, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: #888;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* ===== SERVICES ===== */
+        #services {
+            background: #0f0f1a;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #6c3ce0;
+            box-shadow: 0 20px 50px rgba(108, 60, 224, 0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #a855f7;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .service-card .price-tag {
+            display: inline-block;
+            margin-top: 16px;
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ===== PRICING ===== */
+        #pricing {
+            background: #0a0a0f;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .pricing-card.popular {
+            border-color: #6c3ce0;
+            box-shadow: 0 0 40px rgba(108, 60, 224, 0.1);
+        }
+
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #6c3ce0, #a855f7);
+            padding: 4px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pricing-card .coming-soon-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #555;
+            padding: 4px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #ccc;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 16px 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #888;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: #ccc;
+        }
+
+        .pricing-card ul li i {
+            color: #a855f7;
+            margin-right: 10px;
+        }
+
+        .pricing-card .btn-primary {
+            width: 100%;
+        }
+
+        /* ===== WORK ===== */
+        #work {
+            background: #0f0f1a;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .work-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .work-item:hover {
+            border-color: #6c3ce0;
+        }
+
+        .work-item i {
+            font-size: 3rem;
+            color: #a855f7;
+            margin-bottom: 16px;
+        }
+
+        .work-item h4 {
+            font-size: 1.1rem;
+        }
+
+        .work-item p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* ===== CONTACT / FORM ===== */
+        #contact {
+            background: #0a0a0f;
+            scroll-margin-top: 80px;
+            padding: 60px 0 100px 0;
+        }
+
+        #contact .section-title {
+            margin-bottom: 40px;
+        }
+
+        .contact-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 50px 45px;
+        }
+
+        .selected-package-display {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            color: #a855f7;
+            font-weight: 600;
+            display: none;
+        }
+
+        .selected-package-display i {
+            margin-right: 10px;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .contact-form select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #6c3ce0;
+            box-shadow: 0 0 20px rgba(108, 60, 224, 0.05);
+        }
+
+        .contact-form textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .contact-form .btn-primary {
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .form-success {
+            display: none;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid #22c55e;
+            border-radius: 12px;
+            padding: 24px 20px;
+            text-align: center;
+            color: #22c55e;
+            margin-top: 16px;
+        }
+
+        .form-success i {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .contact-sidebar {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-sidebar .item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-sidebar .item i {
+            width: 40px;
+            height: 40px;
+            background: rgba(168, 85, 247, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a855f7;
+            font-size: 1rem;
+        }
+
+        .contact-sidebar .item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-sidebar .item span {
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        /* ===== LOCATION BADGE ===== */
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 50px;
+            padding: 10px 20px;
+            margin-top: 8px;
+            color: #a855f7;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .location-badge i {
+            font-size: 1.1rem;
+        }
+
+        /* ===== MAP ===== */
+        .map-container {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #050508;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer .logo {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-image .circle-bg {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-image i {
+                font-size: 8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .contact-wrapper {
+                padding: 30px 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 20px;
+                background: #0a0a0f;
+                padding: 30px 20px;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .hero-image .circle-bg {
+                width: 220px;
+                height: 220px;
+            }
+
+            .hero-image i {
+                font-size: 5rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            #contact {
+                padding: 40px 0 60px 0;
+            }
+
+            .contact-sidebar {
+                flex-direction: column;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn-primary,
+            .btn-secondary,
+            .btn-coming-soon {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .contact-wrapper {
+                padding: 24px 16px;
+            }
+
+            .map-container iframe {
+                height: 180px;
+            }
+
+            .location-badge {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#hero" class="logo">Rah<span>Web</span></a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#contact" class="nav-cta">Start Project</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Build Your <br /><span class="highlight">Digital Empire</span></h1>
+                    <p>
+                        Professional websites that help businesses grow. From simple landing pages
+                        to full e-commerce stores — we build it all.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Start Your Project</a>
+                        <a href="#services" class="btn-secondary">View Services</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div>
+                            <h3>50+</h3>
+                            <p>Websites Built</p>
+                        </div>
+                        <div>
+                            <h3>4.9★</h3>
+                            <p>Client Rating</p>
+                        </div>
+                        <div>
+                            <h3>100%</h3>
+                            <p>Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="circle-bg">
+                        <i class="fas fa-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>What <span class="highlight">We Build</span></h2>
+                <p>Custom websites tailored to your business needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>LaunchPad Website</h3>
+                    <p>1–3 page starter site with homepage, services, and contact form.</p>
+                    <span class="price-tag">From $2,500</span>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Pro Launch</h3>
+                    <p>5–7 page custom website with branding, gallery, and Google-friendly setup.</p>
+                    <span class="price-tag">From $5,500</span>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-crown"></i>
+                    <h3>Premium Launch</h3>
+                    <p>10–15 page full solution with e-commerce, booking, SEO, and more.</p>
+                    <span class="price-tag">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple <span class="highlight">Pricing</span></h2>
+                <p>One-time build. Optional monthly care plans available.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- LaunchPad -->
+                <div class="pricing-card">
+                    <h3>LaunchPad</h3>
+                    <div class="price">$2,500 <span>one-time</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 1–3 Pages</li>
+                        <li><i class="fas fa-check"></i> Simple Design</li>
+                        <li><i class="fas fa-check"></i> Services Section</li>
+                        <li><i class="fas fa-check"></i> Contact Form</li>
+                        <li><i class="fas fa-check"></i> Mobile-Friendly</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" onclick="selectPackage('LaunchPad', 2500)">Get Started</a>
+                </div>
+
+                <!-- Pro Launch (Popular) -->
+                <div class="pricing-card popular">
+                    <div class="badge">Most Popular</div>
+                    <h3>Pro Launch</h3>
+                    <div class="price">$5,500 <span>one-time</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 5–7 Pages</li>
+                        <li><i class="fas fa-check"></i> Custom Branding</li>
+                        <li><i class="fas fa-check"></i> Image Gallery</li>
+                        <li><i class="fas fa-check"></i> Google-Friendly Setup</li>
+                        <li><i class="fas fa-check"></i> 1 Month Free Support</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" onclick="selectPackage('Pro Launch', 5500)">Get Started</a>
+                </div>
+
+                <!-- Premium Launch (Coming Soon) -->
+                <div class="pricing-card">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <h3>Premium Launch</h3>
+                    <div class="price">$10,000 <span>one-time</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 10–15 Pages</li>
+                        <li><i class="fas fa-check"></i> E-Commerce / Booking</li>
+                        <li><i class="fas fa-check"></i> Full SEO Setup</li>
+                        <li><i class="fas fa-check"></i> Stock Photos Included</li>
+                        <li><i class="fas fa-check"></i> Strategy + Training</li>
+                        <li><i class="fas fa-check"></i> 2 Months Free Support</li>
+                    </ul>
+                    <button class="btn-coming-soon" disabled>Coming Soon</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WORK ===== -->
+    <section id="work">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent <span class="highlight">Work</span></h2>
+                <p>Websites we've built for real clients.</p>
+            </div>
+            <div class="work-grid">
+                <div class="work-item">
+                    <i class="fas fa-utensils"></i>
+                    <h4>Bistro 42</h4>
+                    <p>Restaurant website with menu and online ordering.</p>
+                </div>
+                <div class="work-item">
+                    <i class="fas fa-wrench"></i>
+                    <h4>Precision Plumbing</h4>
+                    <p>Service site with booking and contact form.</p>
+                </div>
+                <div class="work-item">
+                    <i class="fas fa-spa"></i>
+                    <h4>Bliss Salon</h4>
+                    <p>Booking system with service catalog and gallery.</p>
+                </div>
+                <div class="work-item">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h4>Urban Threads</h4>
+                    <p>Full e-commerce store with payment integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT FORM ===== -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Let's <span class="highlight">Build</span> Something</h2>
+                <p>Fill out the form below and I'll get back to you within 24 hours.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Selected Package Display -->
+                <div class="selected-package-display" id="selectedPackageDisplay">
+                    <i class="fas fa-check-circle"></i> You're interested in: <span id="selectedPackageName">None</span> — $<span id="selectedPackagePrice">0</span>
+                </div>
+
+                <!-- Form -->
+
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/mdaronzg" method="POST">
+
+    <input type="hidden" name="_subject" value="New Website Project Request">
+
+    <input
+        type="text"
+        name="fullName"
+        placeholder="Your Full Name"
+        required
+    >
+
+    <input
+        type="email"
+        name="email"
+        placeholder="Your Email Address"
+        required
+    >
+
+    <input
+        type="text"
+        name="businessName"
+        placeholder="Business Name"
+    >
+
+    <input
+        type="tel"
+        name="phone"
+        placeholder="Phone Number"
+        required
+    >
+
+    <textarea
+        name="message"
+        placeholder="Tell us about your project..."
+        rows="6"
+        required
+    ></textarea>
+
+    <button type="submit">Send Request</button>
+
+</form>
+
+                <script>
+                const form = document.getElementById("contactForm");
+
+                form.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(form);
+
+                    try {
+                        const response = await fetch(form.action, {
+                            method: "POST",
+                            body: formData,
+                            headers: {
+                                "Accept": "application/json"
+                            }
+                        });
+
+                        if (response.ok) {
+                            alert("✅ Thank you! Your message has been sent.");
+                            form.reset();
+                        } else {
+                            alert("❌ Something went wrong. Please try again.");
+                        }
+                    } catch (error) {
+                        alert("❌ Network error. Please check your connection.");
+                    }
+                });
+                        </script>
+                    <select name="package" id="packageSelect" required>
+                        <option value="">Select Your Package</option>
+                        <option value="LaunchPad">LaunchPad - $2,500</option>
+                        <option value="Pro Launch">Pro Launch - $5,500</option>
+                        <option value="Premium Launch">Premium Launch - $10,000 (Coming Soon)</option>
+                        <option value="Custom">Custom - Let's Talk</option>
+                    </select>
+
+                    <input type="text" name="pages" placeholder="How many pages do you need?" />
+                    <input type="text" name="services" placeholder="What services do you provide?" />
+                    <input type="text" name="colors" placeholder="Any color preferences?" />
+                    <input type="text" name="hosting" placeholder="Do you have hosting? (Yes/No)" />
+                    <input type="text" name="logo" placeholder="Do you have a logo? (Yes/No)" />
+
+                    <textarea name="details" placeholder="Tell me more about your project..." required></textarea>
+                    <button type="submit" class="btn-primary">Send Request</button>
+
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i>
+                        Thank you! I'll get back to you within 24 hours.
+                    </div>
+                </form>
+
+                <!-- Contact Sidebar: Phone Number + Location Badge -->
+                <div class="contact-sidebar">
+                    <!-- Phone Number -->
+                    <div class="item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <span>+1 (816) 916-4156</span>
+                        </div>
+                    </div>
+
+                    <!-- Location Badge -->
+                    <div class="location-badge">
+                        <i class="fas fa-map-pin"></i>
+                        Only in Kansas City Metropolitan Area
+                    </div>
+                </div>
+
+                <!-- Google Map -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d396590.74209505063!2d-94.57252949999999!3d39.052591449999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0e5f7a6c7ad99%3A0x2d3967c6e6fea83a!2sKansas%20City%20Metropolitan%20Area!5e0!3m2!1sen!2sus!4v1782099247302!5m2!1sen!2sus" 
+                        width="600" 
+                        height="450" 
+                        style="border:0; border-radius: 12px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="logo">Rah<span>Web</span></div>
+            <p>&copy; 2026 Rah Web Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== HAMBURGER MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ===== SELECT PACKAGE FROM BUTTON =====
+        function selectPackage(name, price) {
+            const display = document.getElementById('selectedPackageDisplay');
+            const nameSpan = document.getElementById('selectedPackageName');
+            const priceSpan = document.getElementById('selectedPackagePrice');
+            const select = document.getElementById('packageSelect');
+
+            // Show the display
+            display.style.display = 'block';
+
+            // Update the text
+            nameSpan.textContent = name;
+            priceSpan.textContent = price.toLocaleString();
+
+            // Update the dropdown to match
+            const options = select.options;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].text.includes(name)) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+
+            // Smooth scroll to contact section
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ===== UPDATE DISPLAY WHEN DROPDOWN CHANGES =====
+        document.getElementById('packageSelect').addEventListener('change', function() {
+            const display = document.getElementById('selectedPackageDisplay');
+            const nameSpan = document.getElementById('selectedPackageName');
+            const priceSpan = document.getElementById('selectedPackagePrice');
+
+            const selectedText = this.options[this.selectedIndex].text;
+
+            if (this.value === '') {
+                display.style.display = 'none';
+                return;
+            }
+
+            // Extract name and price from dropdown text
+            const match = selectedText.match(/^(.*?)\s*—\s*\$([\d,]+)/);
+            if (match) {
+                display.style.display = 'block';
+                nameSpan.textContent = match[1];
+                priceSpan.textContent = match[2];
+            } else if (this.value === 'Custom') {
+                display.style.display = 'block';
+                nameSpan.textContent = 'Custom Project';
+                priceSpan.textContent = 'TBD';
+            }
+        });
+
+        // ===== FORM SUBMISSION =====
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Show success message
+            const successDiv = document.getElementById('formSuccess');
+            successDiv.style.display = 'block';
+
+            // Hide the submit button
+            this.querySelector('.btn-primary').style.display = 'none';
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
